@@ -1,4 +1,8 @@
 from django.db import models
 
 class Song(models.Model):
-    pass
+    title = models.CharField(max_length = 128)
+    author = models.CharField(max_length = 64)
+
+    def __str__(self):
+        return self.title
