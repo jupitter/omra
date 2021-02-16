@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from song_rater.models import Song
+from django.views.generic.list import ListView
 
 
-# Create your views here.
 def index(request):
     context = {
         "title": "Welcome To The Ordina Music Rater",
@@ -9,3 +10,7 @@ def index(request):
     }
 
     return render(request, 'song_rater/index.html', context)
+
+
+class SongListView(ListView):
+    model = Song
