@@ -20,7 +20,7 @@ class SongListTest(TestCase):
         self.assertContains(r, "Sorry")
 
     def test_with_songs(self):
-        song = Song(author="test", title="test2")
+        song = Song(artist="test", title="test2")
         song.save()
         url = reverse('song_rater:song_list')
         r = self.client.get(url)

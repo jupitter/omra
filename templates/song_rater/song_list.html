@@ -9,12 +9,12 @@
     <table border="1" width="600">
        <tr>
           <td>Title</td>
-          <td>Author</td>
+          <td>Artist</td>
        </tr>
        {% for song in song_list%}
        <tr>
           <td>{{ song.title }}</td>
-          <td>{{ song.author }}</td>
+          <td>{{ song.artist }}</td>
        </tr>
        {% empty %}
        <td>Sorry, no songs in this list.</td>
