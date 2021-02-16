@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from song_rater.models import Song
 from django.views.generic.list import ListView
 
@@ -14,3 +14,5 @@ def index(request):
 
 class SongListView(ListView):
     model = Song
+    context_object_name = 'song_list'
+
