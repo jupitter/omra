@@ -12,5 +12,13 @@
     <p>
         {{ details }}
     </p>
+    <h2>Rate The Song</h2>
+    <form method="post">
+        <table>
+            {{ form }}
+        </table>
+        {% csrf_token %}
+      <button type="submit">Vote</button>
+    </form>
 </body>
 </html>
