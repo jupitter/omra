@@ -40,3 +40,15 @@ def song_detail(request, id):
                }
 
     return render(request, 'song_rater/song_detail.html', context)
+
+
+def add_song(request):
+    if request.method == "POST":
+        if request.POST.get('title') and request.POST.get('artist'):
+            add_song = Song()
+            add_song.title = request.POST.get('title')
+            add_song.artist = request.POST.get('artist')
+            add_song.save()
+            return render(request, 'song_rater/add_song.html')
+    else:
+        return render(request, 'song_rater/add_song.html')
