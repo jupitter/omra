@@ -21,3 +21,7 @@ RATING_CHOICES = [
 class Rating(models.Model):
     rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES)
     song = models.ForeignKey(Song, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return f"{self.song} - rating: {self.rating}"
