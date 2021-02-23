@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1> {{ title }} </h1>
-{{ text }}
+<p>
+    {{ text }}
+</p>
+<li><a href="{% url 'song_rater:song_list'%}">List of Songs</a></li>
+<li><a href="{% url 'song_rater:add_song'%}">Add a Song</a></li>
 </body>
 </html>
