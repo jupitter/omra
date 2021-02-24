@@ -20,5 +20,13 @@
         {% csrf_token %}
       <button type="submit">Vote</button>
     </form>
+    <h3>All votes so far:</h3>
+    <ul>
+       {% for rating in all_ratings reversed%}
+           <li>Rating: {{ rating.rating }} at {{ rating.date }}</li>
+       {% empty %}
+       <td>Sorry, no ratings in this list.</td>
+       {% endfor %}
+    </ul>
 </body>
 </html>

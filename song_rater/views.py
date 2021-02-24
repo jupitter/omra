@@ -32,8 +32,12 @@ def song_detail(request, id):
     else:
         form = RatingForm()
 
-    context = {"details": get_object_or_404(Song, pk=id),
-               "form": form,
-               }
+    song = get_object_or_404(Song, pk=id)
+    ratings_list = song.rating_set.all()
+    context = {
+        "details": song,
+        "form": form,
+        "all_ratings": ratings_list
+    }
 
     return render(request, 'song_rater/song_detail.html', context)
