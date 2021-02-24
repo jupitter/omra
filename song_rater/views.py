@@ -28,15 +28,16 @@ def song_detail(request, id):
             rating = form.save(commit=False)
             rating.song_id = id
             rating.save()
-            return redirect("song_rater:song_list",)
+            return redirect("song_rater:song_list")
     else:
         form = RatingForm()
 
     song = get_object_or_404(Song, pk=id)
     ratings_list = song.rating_set.all()
-    context = {"details": song,
-               "form": form,
-               "all_ratings": ratings_list
-               }
+    context = {
+        "details": song,
+        "form": form,
+        "all_ratings": ratings_list
+    }
 
     return render(request, 'song_rater/song_detail.html', context)
