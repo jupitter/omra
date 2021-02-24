@@ -9,12 +9,16 @@
     <table border="1" width="600">
        <tr>
           <td>Title</td>
-          <td>Author</td>
+          <td>Artist</td>
        </tr>
        {% for song in song_list%}
        <tr>
-          <td>{{ song.title }}</td>
-          <td>{{ song.author }}</td>
+          <td>
+             <a href="{% url 'song_rater:song_detail' song.id %}">
+                 {{ song.title }}
+             </a>
+          </td>
+          <td>{{ song.artist }}</td>
        </tr>
        {% empty %}
        <td>Sorry, no songs in this list.</td>

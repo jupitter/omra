@@ -20,9 +20,20 @@ class SongListTest(TestCase):
         self.assertContains(r, "Sorry")
 
     def test_with_songs(self):
-        song = Song(author="test", title="test2")
+        song = Song(artist="test", title="test2")
         song.save()
         url = reverse('song_rater:song_list')
         r = self.client.get(url)
         self.assertEqual(r.status_code, 200)
         self.assertContains(r, "test2")
+
+
+class DetailViewTest(TestCase):
+    def setUp(self):
+        self.song = Song.objects.create(title="I Want To Know What Love Is", artist="Foreigner")
+
+    def test_detail(self):
+        url = reverse('song_rater:song_detail', kwargs={"id": self.song.id})
+        r = self.client.get(url)
+        self.assertEqual(r.status_code, 200)
+        self.assertContains(r, "I Want To Know What Love Is")
