@@ -46,4 +46,8 @@ def song_detail(request, id):
 class AddSong(CreateView):
     model = Song
     fields = ['title', 'artist']
-    success_url = "/"
+    success_url = "/song_add_succes"
+
+
+def add_song_successfully(request):
+    return render(request, 'song_rater/song_add_succes.html')
