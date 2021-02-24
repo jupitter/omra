@@ -20,10 +20,10 @@
         {% csrf_token %}
       <button type="submit">Vote</button>
     </form>
-    <p>Latest ratings:</p
+    <h3>Latest ratings:</h3>
     <ul>
        {% for rating in all_ratings reversed%}
-           <li>Rating:{{ rating.rating }} - {{ rating.date }}</li>
+           <li>Rating: {{ rating.rating }} at {{ rating.date }}</li>
        {% empty %}
        <td>Sorry, no ratings in this list.</td>
        {% endfor %}
