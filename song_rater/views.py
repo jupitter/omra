@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from song_rater.models import Song, Rating
 from django.views.generic.list import ListView
 from django.forms import modelform_factory
+from django.views.generic.edit import CreateView
 
 
 def index(request):
@@ -42,13 +43,7 @@ def song_detail(request, id):
     return render(request, 'song_rater/song_detail.html', context)
 
 
-def add_song(request):
-    if request.method == "POST":
-        if request.POST.get('title') and request.POST.get('artist'):
-            add_song = Song()
-            add_song.title = request.POST.get('title')
-            add_song.artist = request.POST.get('artist')
-            add_song.save()
-            return render(request, 'song_rater/add_song.html')
-    else:
-        return render(request, 'song_rater/add_song.html')
+class AddSong(CreateView):
+    model = Song
+    fields = ['title', 'artist']
+    success_url = "/"
