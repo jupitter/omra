@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from song_rater.models import Song, Rating
 from django.views.generic.list import ListView
 from django.forms import modelform_factory
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 
 def index(request):
@@ -41,3 +43,13 @@ def song_detail(request, id):
     }
 
     return render(request, 'song_rater/song_detail.html', context)
+
+
+class AddSong(CreateView):
+    model = Song
+    fields = ['title', 'artist']
+    success_url = reverse_lazy("song_rater:add_song_successfully")
+
+
+def add_song_successfully(request):
+    return render(request, 'song_rater/song_add_succes.html')

@@ -44,3 +44,12 @@ class DetailViewTest(TestCase):
         r = self.client.get(url)
         self.assertEqual(r.status_code, 200)
         self.assertContains(r, "Rating: 2")
+
+
+class AddSongTest(TestCase):
+    def test_added_song(self):
+        url = reverse('song_rater:add_song')
+        r = self.client.get(url)
+        self.assertEqual(r.status_code, 200)
+        self.client.post('/add_song', {"title": "testing123", 'artist': "artist123"})
+        self.assertEqual(Song.objects.last().title, "testing123")

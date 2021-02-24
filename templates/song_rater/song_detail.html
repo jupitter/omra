@@ -20,7 +20,7 @@
         {% csrf_token %}
       <button type="submit">Vote</button>
     </form>
-    <h3>All votes so far:</h3>
+    <h3>Latest ratings:</h3>
     <ul>
        {% for rating in all_ratings reversed%}
            <li>Rating: {{ rating.rating }} at {{ rating.date }}</li>
@@ -28,5 +28,7 @@
        <td>Sorry, no ratings in this list.</td>
        {% endfor %}
     </ul>
+    <br/>
+    <a href="{% url 'song_rater:song_list'%}">Back to Songs List</a>
 </body>
 </html>
