@@ -5,6 +5,7 @@ from django.forms import modelform_factory
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 
+
 def index(request):
     context = {
         "title": "Welcome To The Ordina Music Rater",
